@@ -1,9 +1,35 @@
-import turtle
+from turtle import *
 import numpy as np
-
 
 def createBoard(sideLength):
     b = np.zeros((sideLength,sideLength))
+    color('red', 'yellow')
+    begin_fill()
+    counter = 0;
+    startX = 0
+    startY = 0
+    for x in range(sideLength*sideLength):
+        i = 0
+        while i< 4:
+            forward(50)
+            left(90)
+            i +=1
+        penup()
+        if counter < sideLength - 1:
+            goto(startX-50, startY)
+            startX-=50
+            counter+=1
+        elif x!= sideLength*sideLength -1:
+            goto(startX+50*(sideLength-1), startY-50)
+            startX=startX+50*(sideLength-1)
+            startY-=50
+            counter = 0
+        pendown()       
+    penup()
+    goto(startX+50*(sideLength-1), startY)
+    pendown()
+    end_fill()
+    done()
     return b
 
 boardSet = False
@@ -99,6 +125,7 @@ def game():
         try:
             if(board[int(move[0])][int(move[1])]==0):
                 board[int(move[0])][int(move[1])]=turn
+                printPos()
                 printBoard()
                 if turn == 1:
                     turn = 2

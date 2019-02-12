@@ -1,6 +1,37 @@
 from turtle import *
 import numpy as np
 
+<<<<<<< HEAD
+=======
+t = turtle.Turtle()
+screen = turtle.Screen()
+
+# slow mode:
+# t.speed(10)
+
+
+#optmizations:
+t.speed(0)
+screen.tracer(100, 1)
+t.hideturtle()
+
+screenx = screen.screensize()[0]
+screeny = screen.screensize()[1]
+
+# this function draws a rectangle around the screen to show board
+def draw_bounding():
+    t.penup()
+    t.goto(-screenx, screeny)
+    t.pendown()
+    for i in range(2):
+        t.forward(screenx*2)
+        t.right(90)
+        t.forward(screeny*2)
+        t.right(90)
+    t.penup()
+
+
+>>>>>>> d915d1e328c4072d1b5ca97a74f667118d93ad14
 def createBoard(sideLength):
     b = np.zeros((sideLength,sideLength))
     color('red', 'yellow')
